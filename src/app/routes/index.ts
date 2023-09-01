@@ -6,7 +6,7 @@ const moduleRoutes = [
   // ... routes
   {
     path: "",
-    routes: ""
+    route: ""
   }
 ];
 
