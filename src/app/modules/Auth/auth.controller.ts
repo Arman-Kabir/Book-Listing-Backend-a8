@@ -4,16 +4,27 @@ import { AuthService } from "./auth.service";
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
 
-export const createUser = catchAsync(async(req:Request,res:Response)=>{
+export const createUser = catchAsync(async (req: Request, res: Response) => {
     const result = await AuthService.createUser(req.body);
-    sendResponse(res,{
-        statusCode:httpStatus.OK,
-        success:true,
-        message:"User created",
-        data:result
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "User created",
+        data: result
+    })
+});
+
+export const loginUser = catchAsync(async (req: Request, res: Response) => {
+    const result = await AuthService.loginUser(req.body);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "User created",
+        data: result
     })
 });
 
 export const AuthController = {
-    createUser
+    createUser,
+    loginUser
 }

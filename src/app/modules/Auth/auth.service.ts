@@ -10,6 +10,13 @@ const createUser = async (data: User): Promise<User> => {
     return result;
 }
 
+const loginUser = async (data) => {
+    // const result = await 
+    console.log(data);
+    return 'login user called';
+}
+
 export const AuthService = {
-    createUser
+    createUser,
+    loginUser
 }
