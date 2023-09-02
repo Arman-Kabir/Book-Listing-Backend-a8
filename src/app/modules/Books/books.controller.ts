@@ -26,8 +26,19 @@ export const getAllBooks = catchAsync(async (req: Request, res: Response) => {
     })
 });
 
+export const getSingleBook = catchAsync(async (req: Request, res: Response) => {
+    const result = await BookService.getSingleBook(req.params.id);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Single Book fetched Successfully",
+        data: result
+    })
+});
+
 
 export const BookController = {
     createBook,
-    getAllBooks
+    getAllBooks,
+    getSingleBook
 }

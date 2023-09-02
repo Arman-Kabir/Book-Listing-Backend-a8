@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/create-book',BookController.createBook)
 router.get('/',BookController.getAllBooks)
-router.get('/:id',)
+router.get('/:id',BookController.getSingleBook)
 router.patch('/:id',)
 router.delete('/:id',)
 
