@@ -9,7 +9,12 @@ const createBook = async (data: Book): Promise<Book> => {
     return result;
 };
 
+const getAllBooks = async () => {
+    const result = await prisma.book.findMany({});
+    return result;
+};
 
 export const BookService = {
-    createBook
+    createBook,
+    getAllBooks
 }

@@ -5,7 +5,7 @@ import { BookController } from './books.controller';
 const router = express.Router();
 
 router.post('/create-book',BookController.createBook)
-router.get('/',)
+router.get('/',BookController.getAllBooks)
 router.get('/:id',)
 router.patch('/:id',)
 router.delete('/:id',)
