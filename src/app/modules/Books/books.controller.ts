@@ -3,7 +3,27 @@ import catchAsync from "../../../shared/catchAsync";
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
 import { BookService } from "./books.service";
+import pick from "../../../shared/pick";
+import { booksFilterAbleFields } from "./books.constants";
 
+
+export const getAllBooks = catchAsync(async (req: Request, res: Response) => {
+    // console.log(req.query);
+
+    const filters = pick(req.query,booksFilterAbleFields);
+
+    const options = pick(req.query,['page','size','sortBy','sortOrder']);
+
+    // console.log(filters,options);
+
+    const result = await BookService.getAllBooks(filters,options);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "books fetched Successfully",
+        data: result
+    })
+});
 
 
 export const createBook = catchAsync(async (req: Request, res: Response) => {
@@ -16,15 +36,7 @@ export const createBook = catchAsync(async (req: Request, res: Response) => {
     })
 });
 
-export const getAllBooks = catchAsync(async (req: Request, res: Response) => {
-    const result = await BookService.getAllBooks();
-    sendResponse(res, {
-        statusCode: httpStatus.OK,
-        success: true,
-        message: "books fetched Successfully",
-        data: result
-    })
-});
+
 
 export const getSingleBook = catchAsync(async (req: Request, res: Response) => {
     const result = await BookService.getSingleBook(req.params.id);
