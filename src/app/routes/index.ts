@@ -3,6 +3,7 @@ import { AuthRoutes } from '../modules/Auth/auth.routes';
 import { UserRoutes } from '../modules/User/user.routes';
 import { CategoryRoutes } from '../modules/Category/category.routes';
 import { BookRoutes } from '../modules/Books/books.routes';
+import { OrderRoutes } from '../modules/Orders/orders.routes';
 
 const router = express.Router();
 
@@ -23,6 +24,10 @@ const moduleRoutes = [
   {
     path: "/books",
     route: BookRoutes
+  },
+  {
+    path: "/orders",
+    route: OrderRoutes
   }
 ];
 
