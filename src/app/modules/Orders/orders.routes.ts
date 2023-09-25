@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post('/create-order',OrderController.createOrder)
 router.get('/',OrderController.getAllOrders)
-router.get('/:id',OrderController.getSingleOrder)
-router.patch('/:id',)
-router.delete('/:id',)
+router.get('/',OrderController.getAllOrders)
+router.get('/:orderId',OrderController.getSingleOrder)
+
 
 export const OrderRoutes = router;
