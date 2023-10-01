@@ -14,14 +14,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderService = void 0;
 const prisma_1 = __importDefault(require("../../../shared/prisma"));
+const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
+let jwt = require('jsonwebtoken');
+const getAllOrders = (token) => __awaiter(void 0, void 0, void 0, function* () {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { userId, role } = decoded;
+    console.log(decoded);
+    if (!userId) {
+        throw new ApiError_1.default(400, 'userId not exists');
+    }
+    else if (role === 'admin') {
+        const result = yield prisma_1.default.order.findMany({});
+        return result;
+    }
+    else {
+        const result = yield prisma_1.default.order.findMany({
+            where: {
+                userId
+            }
+        });
+        return result;
+    }
+});
 const createOrder = (data) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.order.create({
         data: data
     });
-    return result;
-});
-const getAllOrders = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.order.findMany({});
     return result;
 });
 const getSingleOrder = (id) => __awaiter(void 0, void 0, void 0, function* () {
