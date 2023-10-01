@@ -31,7 +31,8 @@ export const createOrder = catchAsync(async (req: Request, res: Response) => {
 
 
 export const getSingleOrder = catchAsync(async (req: Request, res: Response) => {
-    const result = await OrderService.getSingleOrder(req.params.orderId);
+    const token = req.headers.authorization;
+    const result = await OrderService.getSingleOrder(req.params.orderId,token!);
     sendResponse(res, {
         statusCode: httpStatus.OK,
         success: true,

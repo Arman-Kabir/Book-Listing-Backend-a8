@@ -38,13 +38,34 @@ const createOrder = async (data: Order): Promise<Order | null> => {
     return result;
 };
 
-const getSingleOrder = async (id: string): Promise<Order | null> => {
-    const result = await prisma.order.findUnique({
-        where: {
-            id
+const getSingleOrder = async (id: string, token: string) => {
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { userId, role } = decoded;
+    console.log(decoded);
+
+    if (!userId) {
+        throw new ApiError(400, 'userId not exists');
+    } else if (role === 'admin') {
+        const result = await prisma.order.findUnique({
+            where: {
+                id
+            }
+        });
+        return result;
+    } else {
+        const result = await prisma.order.findUnique({
+            where: {
+                id
+            }
+        });
+        if (result!?.userId == userId) {
+            return result;
+        }else{
+            return "U r not authorized for this order"
         }
-    });
-    return result;
+
+    }
 };
 
 export const OrderService = {
