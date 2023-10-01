@@ -19,7 +19,6 @@ const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const orders_service_1 = require("./orders.service");
 exports.createOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = req.body;
-    console.log(data);
     const result = yield orders_service_1.OrderService.createOrder(data);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
