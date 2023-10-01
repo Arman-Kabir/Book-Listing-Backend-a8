@@ -4,6 +4,18 @@ import sendResponse from "../../../shared/sendResponse";
 import { Request, Response } from "express";
 import { OrderService } from "./orders.service";
 
+export const getAllOrders = catchAsync(async (req: Request, res: Response) => {
+    const token = req.headers.authorization;
+    const result = await OrderService.getAllOrders(token!);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Order fetched Successfully",
+        data: result
+    })
+});
+
+
 
 export const createOrder = catchAsync(async (req: Request, res: Response) => {
     const data = req.body;
@@ -16,15 +28,7 @@ export const createOrder = catchAsync(async (req: Request, res: Response) => {
     })
 });
 
-export const getAllOrders = catchAsync(async (req: Request, res: Response) => {
-    const result = await OrderService.getAllOrders();
-    sendResponse(res, {
-        statusCode: httpStatus.OK,
-        success: true,
-        message: "Order fetched Successfully",
-        data: result
-    })
-});
+
 
 export const getSingleOrder = catchAsync(async (req: Request, res: Response) => {
     const result = await OrderService.getSingleOrder(req.params.orderId);
