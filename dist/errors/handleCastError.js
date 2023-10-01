@@ -1,5 +1,5 @@
+"use strict";
 // import { IGenericErrorMessage } from '../interfaces/error';
-
 // const handleCastError = (error: mongoose.Error.CastError) => {
 //   const errors: IGenericErrorMessage[] = [
 //     {
@@ -7,7 +7,6 @@
 //       message: 'Invalid Id',
 //     },
 //   ];
-
 //   const statusCode = 400;
 //   return {
 //     statusCode,
@@ -15,5 +14,4 @@
 //     errorMessages: errors,
 //   };
 // };
-
 // export default handleCastError;
