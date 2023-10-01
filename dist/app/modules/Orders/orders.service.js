@@ -42,13 +42,34 @@ const createOrder = (data) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return result;
 });
-const getSingleOrder = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.order.findUnique({
-        where: {
-            id
+const getSingleOrder = (id, token) => __awaiter(void 0, void 0, void 0, function* () {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { userId, role } = decoded;
+    console.log(decoded);
+    if (!userId) {
+        throw new ApiError_1.default(400, 'userId not exists');
+    }
+    else if (role === 'admin') {
+        const result = yield prisma_1.default.order.findUnique({
+            where: {
+                id
+            }
+        });
+        return result;
+    }
+    else {
+        const result = yield prisma_1.default.order.findUnique({
+            where: {
+                id
+            }
+        });
+        if ((result === null || result === void 0 ? void 0 : result.userId) == userId) {
+            return result;
         }
-    });
-    return result;
+        else {
+            return "U r not authorized for this order";
+        }
+    }
 });
 exports.OrderService = {
     createOrder,

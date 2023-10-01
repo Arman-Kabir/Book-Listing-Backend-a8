@@ -38,7 +38,8 @@ exports.createOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     });
 }));
 exports.getSingleOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield orders_service_1.OrderService.getSingleOrder(req.params.orderId);
+    const token = req.headers.authorization;
+    const result = yield orders_service_1.OrderService.getSingleOrder(req.params.orderId, token);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
