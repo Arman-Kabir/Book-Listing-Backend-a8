@@ -5,18 +5,18 @@
 - api/v1/auth/signup (POST)
 - api/v1/auth/signin (POST)
 - api/v1/users (GET)
-- api/v1/users/9a38455b-ca91-4031-90e8-dd15c14cdb55 (Single GET) Include an id that is saved in your database
-- api/v1/users/9a38455b-ca91-4031-90e8-dd15c14cdb55 (PATCH)
-- api/v1/users/9a38455b-ca91-4031-90e8-dd15c14cdb55 (DELETE) Include an id that is saved in your database
+- api/v1/users/1107e6dd-f236-4a09-a454-796450f71a3d (Single GET) Include an id that is saved in your database-->1107e6dd-f236-4a09-a454-796450f71a3d
+- api/v1/users/1107e6dd-f236-4a09-a454-796450f71a3d (PATCH)
+- api/v1/users/b8d5958a-224e-4b92-996a-e4b3984b7f90 (DELETE) Include an id that is saved in your database-->b8d5958a-224e-4b92-996a-e4b3984b7f90
 - api/v1/profile (GET)
 
 ## Category
 
 - api/v1/categories/create-category (POST)
 - api/v1/categories (GET)
-- api/v1/categories/835fe270-0370-413b-bbec-443234c91df9 (Single GET) Include an id that is saved in your database
-- api/v1/categories/835fe270-0370-413b-bbec-443234c91df9 (PATCH)
-- api/v1/categories/835fe270-0370-413b-bbec-443234c91df9 (DELETE) Include an id that is saved in your database
+- api/v1/categories/174054bd-4e8b-4db2-85d1-592ac76dc130 (Single GET) Include an id that is saved in your database-->174054bd-4e8b-4db2-85d1-592ac76dc130
+- api/v1/categories/174054bd-4e8b-4db2-85d1-592ac76dc130 (PATCH)
+- api/v1/categories/e2e5509f-7983-41fd-8727-ef891ab1b14a (DELETE) Include an id that is saved in your database
 
 ## Books
 
@@ -30,4 +30,4 @@
  ## Orders
 - api/v1/orders/create-order (POST)
 - api/v1/orders (GET)
-- api/v1/orders/:orderId = deb51194-62c8-40b4-be85-daa5fe5f284c (GET)
+- api/v1/orders/:orderId = b4bd5f51-b217-4ebc-8c95-163ce6bfb1d8 (GET)
