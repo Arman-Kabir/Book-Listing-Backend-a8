@@ -9,6 +9,7 @@ const router = express.Router();
 router.post('/create-book', BookController.createBook)
 router.get('/', BookController.getAllBooks)
 router.get('/:id', BookController.getSingleBook)
+router.get('/:categoryId/category', BookController.getBooksByCategoryId)
 router.patch('/:id', auth(ENUM_USER_ROLE.ADMIN), BookController.updateSingleBook)
 router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), BookController.deleteBook)
 
