@@ -3,9 +3,9 @@ import prisma from "../../../shared/prisma";
 
 
 
-const createOrder = async ( data:Order):Promise<Order> => {
+const createOrder = async (data: Order): Promise<Order | null> => {
     const result = await prisma.order.create({
-        data
+        data: data as any
     });
     return result;
 };

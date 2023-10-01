@@ -18,7 +18,7 @@ model User {
   role             String
   contactNo        String
   address          String
-  profileImg     String
+  profileImg       String
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
   reviewAndRatings ReviewAndRating[]
@@ -37,7 +37,7 @@ model Category {
 }
 
 model Book {
-  id              String   @id @default(uuid())
+  id              String @id @default(uuid())
   title           String
   author          String
   price           Float
@@ -47,8 +47,8 @@ model Book {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  category        Category          @relation(fields: [categoryId], references: [id])
-  categoryId      String
+  category         Category          @relation(fields: [categoryId], references: [id])
+  categoryId       String
   reviewAndRatings ReviewAndRating[]
 
   @@map("books")
@@ -70,13 +70,19 @@ model ReviewAndRating {
   @@map("reviewAndRatings")
 }
 
-model Order{
-  id        String   @id @default(uuid())
-  userId String
-  orderedBooks Json[]
-  status String @default("pending")
 
-  createdAt DateTime @default(now())
+
+model Order {
+  id           String @id @default(uuid())
+  userId       String
+  orderedBooks Json[] 
+
+  status       String @default("pending")
+  createdAt    DateTime @default(now())
 
   @@map("orders")
 }
+
+
+
+
